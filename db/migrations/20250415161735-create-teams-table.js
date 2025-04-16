@@ -23,10 +23,6 @@ module.exports = {
           type: Sequelize.STRING,
           allowNull: false,
         },
-        stadium: {
-          type: Sequelize.STRING,
-          allowNull: false,
-        },
       }
     )
   },

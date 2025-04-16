@@ -1,6 +1,11 @@
 import { Sequelize } from "sequelize";
 import env from "../env";
-import createTeam from './team.model'
+import createTeamModel from './team.model'
+import createTeamGameModel from './TeamGame'
+import createGameModel from './game.model'
+import createStadiumModel from './stadium.model'
+import createPlayerModel from './player.model'
+import createInjuryModel from './injury.model'
 
 export const sequelize = new Sequelize(env.DB_URL)
 
@@ -12,9 +17,11 @@ sequelize.authenticate().then(() => {
 });
 
 // creating models
-export const Team = createTeam(sequelize)
+export const Team = createTeamModel(sequelize)
+export const Game = createGameModel(sequelize)
+export const TeamGame = createTeamGameModel(sequelize)
+export const Stadium = createStadiumModel(sequelize)
+export const Player = createPlayerModel(sequelize)
+export const Injury = createInjuryModel(sequelize)
 
 
-
-
-export  { Sequelize }

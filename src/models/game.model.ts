@@ -1,58 +1,54 @@
 import {
-    Model,
+    DataTypes,
     InferAttributes,
     InferCreationAttributes,
-    DataTypes,
+    Model,
     Sequelize,
 } from "sequelize";
 
 export default function (sequelize: Sequelize) {
-    class Team extends Model<
-        InferAttributes<Team>,
-        InferCreationAttributes<Team>
+    class Game extends Model<
+        InferAttributes<Game>,
+        InferCreationAttributes<Game>
     > {
         id?: number;
-        teamName!: string;
-        city!: string;
-        coach!: string;
+        date!: Date;
+        hScore!: number;
+        aScore!: number;
         stadiumId!: number;
     }
-
-    // Realationships
-
-
-    Team.init(
+        
+    Game.init(
         {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true,
             },
-            teamName: {
-                type: DataTypes.STRING,
-                unique: true,
+            date: {
+                type: DataTypes.DATE,
                 allowNull: false,
             },
-            city: {
-                type: DataTypes.STRING,
+            hScore: {
+                type: DataTypes.NUMBER,
                 allowNull: false,
             },
-            coach: {
-                type: DataTypes.STRING,
+            aScore: {
+                type: DataTypes.NUMBER,
                 allowNull: false,
             },
             stadiumId: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.NUMBER,
                 allowNull: false,
                 references: { model: 'stadiums', key: 'id' }
             },
         },
         {
             sequelize,
-            modelName: "Team",
-            tableName: 'teams',
+            modelName: "Game",
+            tableName: "games",
             timestamps: false
         }
     );
-    return Team
+    return Game;
 }

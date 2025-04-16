@@ -1,4 +1,4 @@
-import express , { Express }from "express" 
+import express, { Express } from "express"
 import cors from "cors"
 import 'express-async-errors';
 
@@ -11,17 +11,13 @@ import notFoundMiddleware from "./middlewares/notFound.middleware";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 import { swaggerOptions } from "./config/swagger-config";
-
-import { Team } from "./models";
-
-Team.findAll().then((data)=> {
-    console.log(data)
-})
+import './models/associations'
 
 // import Routers
 
 
-export const app : Express = express();
+
+export const app: Express = express();
 
 app.use(express.json())
 app.use(requestLogger)
