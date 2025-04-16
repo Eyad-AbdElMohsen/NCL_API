@@ -12,6 +12,12 @@ import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 import { swaggerOptions } from "./config/swagger-config";
 
+import { Team } from "./models";
+
+Team.findAll().then((data)=> {
+    console.log(data)
+})
+
 // import Routers
 
 
