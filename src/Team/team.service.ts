@@ -1,14 +1,14 @@
 import ApiError from "../errors/api.error";
 import { Stadium, Team } from "../models"
 
-type CreateTeamData = {
+type createTeamData = {
     teamName: string;
     city: string;
     coach: string;
     stadiumId: number;
 };
 
-export const createTeam = async (data: CreateTeamData) => {
+export const createTeam = async (data: createTeamData) => {
     let newTeam
     try {
         newTeam = await Team.create(data);
@@ -26,7 +26,6 @@ export const getTeamById = async (id: number) => {
     if(!team){
         throw new ApiError('Team Not Found, wrong id', 404)
     }
-        
     return team
 }
 

@@ -9,6 +9,7 @@ import notFoundMiddleware from "./middlewares/notFound.middleware";
 
 // import Routers
 import teamRouter from "./Team/team.route";
+import stadiumRouter from "./Stadium/stadium.route";
 
 
 // db relashionships
@@ -37,6 +38,7 @@ app.use(
 
 //Routes
 app.use(teamRouter)
+app.use(stadiumRouter)
 
 
 // glopal middleware
