@@ -46,7 +46,7 @@ export default function (sequelize: Sequelize) {
             teamId: {
                 type: DataTypes.INTEGER,
                 allowNull: true,
-                references: {model: 'teams', key: 'id'}
+                references: {model: 'teams', key: 'id'},
             },
             captainId: {
                 type: DataTypes.INTEGER,

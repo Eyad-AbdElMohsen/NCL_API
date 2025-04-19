@@ -39,7 +39,7 @@ export default function (sequelize: Sequelize) {
             },
             stadiumId: {
                 type: DataTypes.NUMBER,
-                allowNull: false,
+                allowNull: true,
                 references: { model: 'stadiums', key: 'id' }
             },
         },

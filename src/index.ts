@@ -7,14 +7,17 @@ import { requestLogger } from "./middlewares/requestLogger";
 import errorMiddleware from "./middlewares/error.middleware";
 import notFoundMiddleware from "./middlewares/notFound.middleware";
 
-// Swagger setup
-import swaggerUi from "swagger-ui-express";
-import swaggerJsDoc from "swagger-jsdoc";
-import { swaggerOptions } from "./config/swagger-config";
+// import Routers
+import teamRouter from "./Team/team.route";
+
+
+// db relashionships
 import './models/associations'
 
-// import Routers
-
+// Swagger setup
+// import swaggerUi from "swagger-ui-express";
+// import swaggerJsDoc from "swagger-jsdoc";
+// import { swaggerOptions } from "./config/swagger-config";
 
 
 export const app: Express = express();
@@ -29,10 +32,11 @@ app.use(
 );
 
 // Swagger documentation
-const swaggerSpec = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// const swaggerSpec = swaggerJsDoc(swaggerOptions);
+// app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Routes
+app.use(teamRouter)
 
 
 // glopal middleware
