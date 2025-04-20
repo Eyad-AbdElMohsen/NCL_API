@@ -14,6 +14,7 @@ export default function (sequelize: Sequelize) {
         id?: number;
         period!: number
         playerId!: number
+        date!: Date
     }
         
     Injury.init(
@@ -31,6 +32,11 @@ export default function (sequelize: Sequelize) {
                 type: DataTypes.INTEGER,
                 allowNull: false,
                 references: { model: 'players', key: 'id' }
+            },
+            date: {
+                type: DataTypes.DATE,
+                allowNull: false,
+                defaultValue: new Date()
             }
         },
         {

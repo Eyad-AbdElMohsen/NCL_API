@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import * as playerService from './player.service'
 import ApiError from "../errors/api.error";
+import { getPlayerInjuryHistory } from "../Injury/injury.service";
 
 export const addNewPlayer: RequestHandler = async(req, res) => {
     // need validation 
@@ -60,6 +61,18 @@ export const updatePlayerDetails: RequestHandler = async(req, res) => {
         status: 'SUCCESS',
         data: {
             updatedPlayer
+        }
+    })
+}
+
+export const getPlayerInjuriesHistory: RequestHandler = async(req, res) => {
+    //need validation
+    const playerId = Number(req.params.playerId)
+    const injuryHistory = await getPlayerInjuryHistory(playerId)
+    res.status(200).json({
+        status: 'SUCCESS',
+        data: {
+            injuryHistory
         }
     })
 }

@@ -14,6 +14,7 @@ import './models/associations'
 import teamRouter from "./Team/team.route";
 import stadiumRouter from "./Stadium/stadium.route";
 import playerRouter from "./Player/player.route";
+import injuryRouter from "./Injury/injury.route";
 
 
 // Swagger setup
@@ -37,14 +38,15 @@ app.use(
 // const swaggerSpec = swaggerJsDoc(swaggerOptions);
 // app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+
 //Routes
 app.use(teamRouter)
 app.use(playerRouter)
 app.use(stadiumRouter)
+app.use(injuryRouter)
 
 // glopal middleware
 app.all('*', notFoundMiddleware)
 
 //err handler
 app.use(errorMiddleware)
-
