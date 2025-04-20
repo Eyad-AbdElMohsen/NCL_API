@@ -7,13 +7,14 @@ import { requestLogger } from "./middlewares/requestLogger";
 import errorMiddleware from "./middlewares/error.middleware";
 import notFoundMiddleware from "./middlewares/notFound.middleware";
 
+// db relashionships
+import './models/associations'
+
 // import Routers
 import teamRouter from "./Team/team.route";
 import stadiumRouter from "./Stadium/stadium.route";
+import playerRouter from "./Player/player.route";
 
-
-// db relashionships
-import './models/associations'
 
 // Swagger setup
 // import swaggerUi from "swagger-ui-express";
@@ -38,8 +39,8 @@ app.use(
 
 //Routes
 app.use(teamRouter)
+app.use(playerRouter)
 app.use(stadiumRouter)
-
 
 // glopal middleware
 app.all('*', notFoundMiddleware)

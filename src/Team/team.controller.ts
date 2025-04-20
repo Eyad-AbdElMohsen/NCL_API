@@ -1,7 +1,7 @@
 import { RequestHandler } from "express";
 import * as teamService from './team.service'
 import ApiError from "../errors/api.error";
-
+import { gettingTeamPlayers, updatingTeamCaptain } from "../Player/player.service";
 
 export const createTeam: RequestHandler = async(req, res) => {
     // need validation
@@ -50,4 +50,24 @@ export const updateTeamStadiumId: RequestHandler = async(req, res) => {
             updatedTeam
         }
     })
+}
+
+export const getTeamPlayers: RequestHandler = async(req, res) => {
+    // need validation
+    const teamId = Number(req.params.teamId)
+    const players = await gettingTeamPlayers(teamId)
+    res.status(200).json({
+        status: 'SUCCESS',
+        data: {
+            players
+        }
+    })
+}
+
+export const updateTeamCaptain: RequestHandler = async(req, res) => {
+    //need validation
+    const  teamId  = Number(req.params.teamId);
+    const  captainId  = req.body.captainId; 
+    await updatingTeamCaptain(teamId, captainId)
+    res.status(200).json({ status: 'SUCCESS' })
 }

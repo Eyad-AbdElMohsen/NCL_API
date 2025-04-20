@@ -9,14 +9,13 @@ type createTeamData = {
 };
 
 export const createTeam = async (data: createTeamData) => {
-    let newTeam
     try {
-        newTeam = await Team.create(data);
+        const newTeam = await Team.create(data);
+        return newTeam
     } catch (err) {
         console.log('err in creating team: ', err)
         throw new ApiError('Team is not created', 400)
     }
-    return newTeam
 }
 
 export const getTeams = async () => await Team.findAll()

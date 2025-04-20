@@ -6,14 +6,13 @@ type createStadiumData = {
 }
 
 export const createStadium = async(data: createStadiumData) => {
-    let newStadium
     try {
-        newStadium = await Stadium.create(data);
+        const newStadium = await Stadium.create(data);
+        return newStadium
     } catch (err) {
         console.log('err in creating stadium: ', err)
         throw new ApiError('Stadium is not created', 400)
     }
-    return newStadium
 }
 
 export const getAllStadiums = async() => await Stadium.findAll()

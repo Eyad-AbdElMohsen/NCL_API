@@ -17,7 +17,7 @@ export default function (sequelize: Sequelize) {
         SkillLVL!: string;
         position!: string;
         teamId?: number;
-        captainId?: number
+        captainId?: number | null
     }
         
     Player.init(
