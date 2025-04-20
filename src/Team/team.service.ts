@@ -1,5 +1,6 @@
 import ApiError from "../errors/api.error";
 import { Stadium, Team } from "../models"
+import { getStadiumById } from "../Stadium/stadium.service";
 
 type createTeamData = {
     teamName: string;
@@ -29,12 +30,10 @@ export const getTeamById = async (id: number) => {
 }
 
 export const checkTeamStadiumId = async (id: number) => {
-    const stadium = await Stadium.findByPk(id)
-    if(!stadium) 
-        throw new ApiError('stadium id not found', 404)
-    const oldStadium = await Team.findOne({ where: {stadiumId: id}})
-    if(oldStadium)
-        throw new ApiError('stadium id is already taken', 400)
+    await getStadiumById(id)
+    const unavailableStadium = await Team.findOne({ where: {stadiumId: id}})
+    if(unavailableStadium)
+        throw new ApiError('stadium id is unavailable', 400)
 }
 
 export const updateTeamStadiumId = async(teamId: number, stadiumId: number) => {    

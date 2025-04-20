@@ -10,5 +10,4 @@ teamRouter.patch('/teams/:teamId', teamController.updateTeamStadiumId)
 teamRouter.get('/teams/:teamId/players', teamController.getTeamPlayers)
 teamRouter.post('/teams/:teamId/captain', teamController.updateTeamCaptain);
 
-
 export default teamRouter

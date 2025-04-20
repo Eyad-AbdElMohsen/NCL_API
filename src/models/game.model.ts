@@ -13,8 +13,8 @@ export default function (sequelize: Sequelize) {
     > {
         id?: number;
         date!: Date;
-        hScore!: number;
-        aScore!: number;
+        hScore?: number;
+        aScore?: number;
         stadiumId!: number;
     }
         
@@ -31,11 +31,13 @@ export default function (sequelize: Sequelize) {
             },
             hScore: {
                 type: DataTypes.NUMBER,
-                allowNull: false,
+                allowNull: true,
+                defaultValue: null
             },
             aScore: {
                 type: DataTypes.NUMBER,
-                allowNull: false,
+                allowNull: true,
+                defaultValue: null
             },
             stadiumId: {
                 type: DataTypes.NUMBER,
