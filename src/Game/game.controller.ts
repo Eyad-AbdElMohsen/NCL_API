@@ -4,12 +4,13 @@ import ApiError from "../errors/api.error";
 
 export const createNewGame: RequestHandler = async (req, res) => {
     // need validation
+    // data contain Game data, hTeamId and aTeamId
     const data = req.body
-    const newGame = await gameService.createNewGame(data)
+    const newGameDetails = await gameService.createNewGame(data)
     res.status(200).json({
         status: 'SUCCESS',
         data: {
-            newGame
+            newGameDetails
         }
     })
 }

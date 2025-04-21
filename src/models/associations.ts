@@ -34,6 +34,13 @@ Team.belongsToMany(Game, {
   onDelete: "CASCADE",
 });
 
+// for include
+Game.hasMany(TeamGame, { foreignKey: "gameId" });
+TeamGame.belongsTo(Game, { foreignKey: "gameId" });
+Team.hasMany(TeamGame, { foreignKey: "teamId" });
+TeamGame.belongsTo(Team, { foreignKey: "teamId" });
+
+
 //1 to M
 Team.hasMany(Player, {
   foreignKey: "teamId",

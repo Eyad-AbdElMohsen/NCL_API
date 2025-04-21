@@ -16,6 +16,7 @@ import stadiumRouter from "./Stadium/stadium.route";
 import playerRouter from "./Player/player.route";
 import injuryRouter from "./Injury/injury.route";
 import gameRouter from "./Game/game.route";
+import teamGameRouter from "./TeamGame/teamGame.route";
 
 
 // Swagger setup
@@ -46,6 +47,7 @@ app.use(playerRouter)
 app.use(stadiumRouter)
 app.use(injuryRouter)
 app.use(gameRouter)
+app.use(teamGameRouter)
 
 // glopal middleware
 app.all('*', notFoundMiddleware)
