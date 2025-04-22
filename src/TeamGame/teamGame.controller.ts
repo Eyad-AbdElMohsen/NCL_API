@@ -1,9 +1,10 @@
 import { RequestHandler } from "express";
 import * as teamGameService from './teamGame.service'
+import { getTeamParams } from "../Team/team.shema";
+import { GetGameParams } from "../Game/game.schema";
 
-export const getAllTeamGames: RequestHandler = async(req, res) => {
-    // need validation
-    const teamId = Number(req.params.teamId)
+export const getAllTeamGames: RequestHandler<getTeamParams> = async(req, res) => {
+    const teamId = req.params.teamId
     const teamGames = await teamGameService.getAllTeamGames(teamId)
     res.status(200).json({
         status: 'SUCCESS',
@@ -13,9 +14,8 @@ export const getAllTeamGames: RequestHandler = async(req, res) => {
     })
 }
 
-export const getTeamGameByGameId: RequestHandler = async(req, res) => {
-    // need validation
-    const gameId = Number(req.params.gameId)
+export const getTeamGameByGameId: RequestHandler<GetGameParams> = async(req, res) => {
+    const gameId = req.params.gameId
     const [teamsRoles, gameDetails] = await teamGameService.getTeamGameByGameId(gameId)
     res.status(200).json({
         status: 'SUCCESS',

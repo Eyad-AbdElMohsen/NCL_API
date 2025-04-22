@@ -7,11 +7,12 @@ type createPlayerData = {
     age: number;
     SkillLVL: string;
     position: string;
-    teamId: number;
-    captainId: number
+    teamId?: number;
+    captainId?: number
 };
 
 type updatePlayerData = {
+    playerName?: string;
     age?: number;
     SkillLVL?: string;
     position?: string;

@@ -1,9 +1,9 @@
 import { RequestHandler } from "express";
 import * as stadiumService from './stadium.service'
 import ApiError from "../errors/api.error";
+import { getStadiumParams } from "./stadium.shema";
 
 export const createStadium: RequestHandler = async (req, res) => {
-    // need validation 
     const data = req.body
     const newStadium = await stadiumService.createStadium(data)
     res.status(200).json({
@@ -24,10 +24,8 @@ export const getAllStadiums: RequestHandler = async (req, res) => {
     })
 }
 
-export const getStadiumById: RequestHandler = async (req, res) => {
-    const id = Number(req.params.stadiumId)
-    if (!id)
-        throw new ApiError('stadium id is required', 400)
+export const getStadiumById: RequestHandler<getStadiumParams> = async (req, res) => {
+    const id = req.params.stadiumId
     const stadium = await stadiumService.getStadiumById(id)
     res.status(200).json({
         status: 'SUCCESS',

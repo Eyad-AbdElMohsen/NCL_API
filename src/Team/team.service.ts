@@ -36,7 +36,7 @@ export const checkTeamStadiumId = async (id: number) => {
         throw new ApiError('stadium id is unavailable', 400)
 }
 
-export const updateTeamStadiumId = async(teamId: number, stadiumId: number) => {    
+export const updateTeamStadium = async(teamId: number, stadiumId: number) => {    
     const team = await getTeamById(teamId)
     await checkTeamStadiumId(stadiumId)
     try{
